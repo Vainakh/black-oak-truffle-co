@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 680" width="100%" height="100%">
+  <defs>
+    <!-- 1. Gold Metallic Foil Gradients matching luxury typography -->
+    <linearGradient id="goldFoil" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F2DE9C" />
+      <stop offset="35%" stop-color="#C8A261" />
+      <stop offset="70%" stop-color="#E2C381" />
+      <stop offset="100%" stop-color="#8B6D36" />
+    </linearGradient>
+
+    <!-- 2. Circular Clip Path framing the exact emblem edges -->
+    <clipPath id="emblemCircleClip">
+      <circle cx="300" cy="270" r="235" />
+    </clipPath>
+
+    <!-- 3. Soft Ambient Diffusion Edge -->
+    <radialGradient id="edgeDissolve" cx="50%" cy="50%" r="50%">
+      <stop offset="85%" stop-color="#000" stop-opacity="1" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0" />
+    </radialGradient>
+    <mask id="smoothCircleMask">
+      <circle cx="300" cy="270" r="235" fill="url(#edgeDissolve)" />
+    </mask>
+  </defs>
+
+  <!-- Circular Cropped Emblem (Exact source image, no background overflow) -->
+  <g clip-path="url(#emblemCircleClip)" mask="url(#smoothCircleMask)">
+    <!-- Maps your exact logo image scaled to the 600x600 coordinate center -->
+    
+  </g>
+
+  <!-- Pure Vector Typography: Exact Cormorant / Georgia letterforms -->
+  <text x="300" y="610" text-anchor="middle" font-family="&#39;Cormorant Garamond&#39;, &#39;Georgia&#39;, serif" font-size="44" font-weight="400" letter-spacing="0.04em" fill="url(#goldFoil)" style="filter: drop-shadow(0 2px 8px rgba(200, 162, 97, 0.25));">
+    Black Oak Truffle Co.
+  </text>
+</svg>

@@ -7,7 +7,7 @@ const truffleProducts = [
     species: 'Tuber melanosporum',
     origin: 'Teruel, Spain & Périgord, France',
     pricePerOz: 135,
-    pricePerLb: 1850,
+    pricePerLb: 2160,
     season: 'November – March',
     grade: 'Extra / Grade A (30g – 100g+)',
     pairing:
@@ -21,7 +21,7 @@ const truffleProducts = [
     species: 'Tuber magnatum pico',
     origin: 'Alba, Piedmont, Italy',
     pricePerOz: 295,
-    pricePerLb: 4400,
+    pricePerLb: 4720,
     season: 'October – December',
     grade: 'Grade A Whole Tubers (20g – 80g)',
     pairing:
@@ -35,7 +35,7 @@ const truffleProducts = [
     species: 'Tuber uncinatum',
     origin: 'Burgundy, France & Austrian Alps',
     pricePerOz: 58,
-    pricePerLb: 850,
+    pricePerLb: 928,
     season: 'September – December',
     grade: 'Grade A Fresh Selects (25g – 90g)',
     pairing:
@@ -68,7 +68,7 @@ const exclusiveSpecimens = [
     weight: '420g (14.8 oz)',
     price: '$1,950',
     certNumber: 'CERT-PERI-2026-442',
-    hunter: 'Certified Hunter Éric (Monaco Reserve)',
+    hunter: 'Certified Hunter Éric (Périgord)',
     description:
       'Magnificent multi-lobed black winter specimen harvested under centuries-old holm oaks with deep forest truffle musk.',
     image: '/lens-1.jpeg',
@@ -96,7 +96,6 @@ const distributionCenters = [
   { center: 'Telluride', region: 'Colorado' },
   { center: 'Basalt', region: 'Colorado' },
   { center: 'Carbondale', region: 'Colorado' },
-  { center: 'Gypsum', region: 'Colorado' },
   { center: 'Eagle', region: 'Colorado' },
 ];
 
@@ -106,29 +105,26 @@ const truffleRegions = [
   { region: 'Périgord', country: 'France' },
   { region: 'Burgundy', country: 'France' },
   { region: 'Austrian Alps', country: 'Austria' },
-  { region: 'Monaco Reserve', country: 'Monaco' },
 ];
 
-const partnerRestaurants = [
-  { name: 'The Little Nell', location: 'Aspen' },
-  { name: 'Matsuhisa', location: 'Aspen & Vail' },
-  { name: 'Element 47', location: 'Aspen' },
-  { name: 'Splendido at the Chateau', location: 'Beaver Creek' },
-  { name: 'Beaver Creek Chophouse', location: 'Beaver Creek' },
-  { name: 'Sweet Basil', location: 'Vail Village' },
-  { name: 'Mountain Standard', location: 'Vail Village' },
-  { name: 'The Wildflower', location: 'Vail' },
-  { name: 'Frasca Food and Wine', location: 'Boulder' },
-  { name: 'Cache Cache', location: 'Aspen' },
+const serviceCorridor = [
+  { name: 'Vail Village', location: 'Eagle County' },
+  { name: 'Beaver Creek', location: 'Eagle County' },
+  { name: 'Aspen', location: 'Pitkin County' },
+  { name: 'Snowmass', location: 'Pitkin County' },
+  { name: 'Telluride', location: 'San Miguel County' },
+  { name: 'Basalt', location: 'Eagle / Pitkin' },
+  { name: 'Carbondale', location: 'Garfield County' },
+  { name: 'Eagle', location: 'Eagle County' },
 ];
 
 // Marquee Ticker Component
 const MarqueeTicker = memo(({ items, isRegion = false }) => (
   <div className="w-full max-w-6xl mx-auto overflow-hidden relative">
-    <div className="absolute left-0 inset-y-0 w-16 bg-gradient-to-r from-[#080706] to-transparent z-20 pointer-events-none" />
-    <div className="absolute right-0 inset-y-0 w-16 bg-gradient-to-l from-[#080706] to-transparent z-20 pointer-events-none" />
+    <div className="absolute left-0 inset-y-0 w-16 bg-gradient-to-r from-[#141414] to-transparent z-20 pointer-events-none" />
+    <div className="absolute right-0 inset-y-0 w-16 bg-gradient-to-l from-[#141414] to-transparent z-20 pointer-events-none" />
 
-    <div className="flex items-center justify-center bg-[#13110E]/90 border border-[#C8A261]/25 py-3 px-8 overflow-hidden rounded-2xl shadow-xl backdrop-blur-md">
+    <div className="flex items-center justify-center bg-[#181818]/90 border border-[#C8A261]/25 py-3 px-8 overflow-hidden rounded-2xl shadow-xl backdrop-blur-md">
       <div className="animate-marquee flex items-center space-x-10 whitespace-nowrap">
         {[...items, ...items, ...items].map((item, idx) => (
           <React.Fragment key={idx}>
@@ -203,7 +199,7 @@ export default function LandingPage() {
     name: '',
     restaurant: '',
     phone: '',
-    tier: '1 lb Weekly Trial',
+    tier: 'Chef trial (4–8 oz)',
     passcode: '',
   });
 
@@ -279,30 +275,30 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="h-[100dvh] overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-[#080706] text-[#A39B8B] font-['Cormorant'] selection:bg-[#C8A261] selection:text-black relative">
+    <div className="h-[100dvh] overflow-y-scroll snap-y snap-mandatory scroll-smooth bg-[#141414] text-[#A39B8B] font-['Cormorant'] selection:bg-[#C8A261] selection:text-black relative">
       {/* 1. Organic Truffle Peridium & Gleba Veining Texture */}
       <div
         className="fixed inset-0 pointer-events-none z-0 opacity-40 mix-blend-color-dodge"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M20 10 L50 40 L40 80 L10 60 Z' fill='%2319140E' stroke='%23C8A261' stroke-width='0.4' stroke-opacity='0.25'/%3E%3Cpath d='M50 40 L95 20 L110 65 L70 90 L40 80 Z' fill='%23120F0B' stroke='%238B6D36' stroke-width='0.5' stroke-opacity='0.2'/%3E%3Cpath d='M95 20 L140 10 L155 50 L110 65 Z' fill='%231E1812' stroke='%23C8A261' stroke-width='0.4' stroke-opacity='0.25'/%3E%3Cpath d='M10 60 L40 80 L25 130 L5 110 Z' fill='%2315110D' stroke='%23C8A261' stroke-width='0.4' stroke-opacity='0.2'/%3E%3Cpath d='M40 80 L70 90 L85 140 L35 150 L25 130 Z' fill='%23221B13' stroke='%23E2C381' stroke-width='0.5' stroke-opacity='0.3'/%3E%3Cpath d='M70 90 L110 65 L135 105 L115 145 L85 140 Z' fill='%2316120D' stroke='%23C8A261' stroke-width='0.4' stroke-opacity='0.2'/%3E%3Cpath d='M110 65 L155 50 L150 100 L135 105 Z' fill='%23261E16' stroke='%238B6D36' stroke-width='0.4' stroke-opacity='0.25'/%3E%3Cpath d='M135 105 L150 100 L155 150 L115 145 Z' fill='%2318140E' stroke='%23C8A261' stroke-width='0.4' stroke-opacity='0.2'/%3E%3Cpath d='M25 45 Q 60 70 85 55 T 140 75' fill='none' stroke='%23E2C381' stroke-width='0.6' stroke-opacity='0.22' stroke-dasharray='3 2'/%3E%3Cpath d='M15 115 Q 50 100 80 125 T 145 115' fill='none' stroke='%23C8A261' stroke-width='0.5' stroke-opacity='0.18'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M20 10 L50 40 L40 80 L10 60 Z' fill='%2319140E' stroke='%23C8A261' stroke-width='0.4' stroke-opacity='0.25'/%3E%3Cpath d='M50 40 L95 20 L110 65 L70 90 L40 80 Z' fill='%23141414' stroke='%238B6D36' stroke-width='0.5' stroke-opacity='0.2'/%3E%3Cpath d='M95 20 L140 10 L155 50 L110 65 Z' fill='%231E1812' stroke='%23C8A261' stroke-width='0.4' stroke-opacity='0.25'/%3E%3Cpath d='M10 60 L40 80 L25 130 L5 110 Z' fill='%2315110D' stroke='%23C8A261' stroke-width='0.4' stroke-opacity='0.2'/%3E%3Cpath d='M40 80 L70 90 L85 140 L35 150 L25 130 Z' fill='%23221B13' stroke='%23E2C381' stroke-width='0.5' stroke-opacity='0.3'/%3E%3Cpath d='M70 90 L110 65 L135 105 L115 145 L85 140 Z' fill='%2316120D' stroke='%23C8A261' stroke-width='0.4' stroke-opacity='0.2'/%3E%3Cpath d='M110 65 L155 50 L150 100 L135 105 Z' fill='%23261E16' stroke='%238B6D36' stroke-width='0.4' stroke-opacity='0.25'/%3E%3Cpath d='M135 105 L150 100 L155 150 L115 145 Z' fill='%2318140E' stroke='%23C8A261' stroke-width='0.4' stroke-opacity='0.2'/%3E%3Cpath d='M25 45 Q 60 70 85 55 T 140 75' fill='none' stroke='%23E2C381' stroke-width='0.6' stroke-opacity='0.22' stroke-dasharray='3 2'/%3E%3Cpath d='M15 115 Q 50 100 80 125 T 145 115' fill='none' stroke='%23C8A261' stroke-width='0.5' stroke-opacity='0.18'/%3E%3C/svg%3E")`,
           backgroundSize: '160px 160px',
         }}
       />
 
-      {/* 2. Earthy Macro Depth Texture (Soil Noise) */}
+      {/* 2. Earthy Macro Depth Texture (Charcoal Paper & Fiber Noise) */}
       <div
-        className="fixed inset-0 pointer-events-none z-50 opacity-[0.055] mix-blend-overlay"
+        className="fixed inset-0 pointer-events-none z-50 opacity-[0.06] mix-blend-overlay"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='truffleGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23truffleGrain)'/%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='truffleGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23truffleGrain)'/%3E%3C/svg%3E")`,
         }}
       />
 
       {/* 3. Luxury Terroir Vignette Illumination */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute -top-[15%] left-1/2 -translate-x-1/2 w-[1200px] h-[700px] rounded-full bg-gradient-to-b from-[#C8A261]/[0.10] via-[#8B6D36]/[0.04] to-transparent blur-[160px]" />
-        <div className="absolute top-[45%] -right-[15%] w-[600px] h-[600px] rounded-full bg-[#3D2C1A]/[0.18] blur-[140px]" />
-        <div className="absolute -bottom-[20%] -left-[10%] w-[700px] h-[700px] rounded-full bg-[#2A1F13]/[0.22] blur-[150px]" />
-        <div className="absolute inset-0 bg-radial from-transparent via-[#080706]/50 to-[#080706]/95" />
+        <div className="absolute -top-[15%] left-1/2 -translate-x-1/2 w-[1200px] h-[700px] rounded-full bg-gradient-to-b from-[#C8A261]/[0.08] via-[#8B6D36]/[0.03] to-transparent blur-[160px]" />
+        <div className="absolute top-[45%] -right-[15%] w-[600px] h-[600px] rounded-full bg-[#3D2C1A]/[0.12] blur-[140px]" />
+        <div className="absolute -bottom-[20%] -left-[10%] w-[700px] h-[700px] rounded-full bg-[#2A1F13]/[0.15] blur-[150px]" />
+        <div className="absolute inset-0 bg-radial from-transparent via-[#141414]/50 to-[#141414]/95" />
       </div>
 
       <style>{`
@@ -353,25 +349,17 @@ export default function LandingPage() {
       )}
 
       {/* ================= PAGE 1: HERO ================= */}
-      <div className="h-[100dvh] w-full snap-start flex flex-col justify-between relative z-10 bg-[#0A0907]/80 py-6">
-        <header className="w-full bg-[#0D0B08]/85 backdrop-blur-md border-b border-[#C8A261]/20 flex-shrink-0 z-50 shadow-lg">
+      <div className="h-[100dvh] w-full snap-start flex flex-col justify-between relative z-10 bg-[#141414] py-6">
+        <header className="w-full bg-[#181818]/90 backdrop-blur-md border-b border-[#C8A261]/20 flex-shrink-0 z-50 shadow-lg">
           <div className="max-w-[1600px] mx-auto px-6 sm:px-12 py-5 flex items-center justify-between">
             <div className="flex items-center space-x-5">
-              {/* Seamless Circular Logo with Radial Mask & Screen Blend */}
               <div className="relative w-[108px] h-[108px] sm:w-[120px] sm:h-[120px] rounded-full overflow-hidden flex items-center justify-center flex-shrink-0 bg-transparent">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(200,162,97,0.18)_0%,_transparent_75%)] pointer-events-none" />
                 <img
                   src="/logo.jpeg"
                   alt="Black Oak Truffle Co. Logo Emblem"
                   loading="eager"
                   decoding="async"
-                  className="w-full h-full object-cover rounded-full mix-blend-screen drop-shadow-[0_4px_16px_rgba(200,162,97,0.25)] filter contrast-125 brightness-110"
-                  style={{
-                    maskImage:
-                      'radial-gradient(circle, black 65%, transparent 98%)',
-                    WebkitMaskImage:
-                      'radial-gradient(circle, black 65%, transparent 98%)',
-                  }}
+                  className="w-full h-full object-cover rounded-full"
                 />
               </div>
               <div className="text-left">
@@ -428,7 +416,7 @@ export default function LandingPage() {
 
           <TiltCard className="w-full grid grid-cols-1 md:grid-cols-12 gap-4 h-[31vh] sm:h-[35vh]">
             <div className="md:col-span-7 h-full overflow-hidden relative p-[1px] bg-gradient-to-b from-[#C8A261]/60 via-[#C8A261]/20 to-transparent rounded-3xl shadow-[0_25px_60px_-15px_rgba(0,0,0,0.95)]">
-              <div className="w-full h-full relative bg-[#12100D] overflow-hidden rounded-3xl">
+              <div className="w-full h-full relative bg-[#181818] overflow-hidden rounded-3xl">
                 <img
                   src="/hero_1.jpeg"
                   alt="Alpine Truffle Mountain Reserve"
@@ -444,7 +432,7 @@ export default function LandingPage() {
 
             <div className="md:col-span-5 grid grid-rows-2 gap-3 h-full">
               <div className="overflow-hidden relative p-[1px] bg-gradient-to-b from-[#C8A261]/40 via-[#C8A261]/15 to-transparent rounded-2xl shadow-[0_15px_40px_-10px_rgba(0,0,0,0.9)]">
-                <div className="w-full h-full relative bg-[#0D0B08] overflow-hidden rounded-2xl">
+                <div className="w-full h-full relative bg-[#181818] overflow-hidden rounded-2xl">
                   <img
                     src="/hero_2.jpeg"
                     alt="Preserved Reserve Jars & Marketing Items"
@@ -459,7 +447,7 @@ export default function LandingPage() {
               </div>
 
               <div className="overflow-hidden relative p-[1px] bg-gradient-to-b from-[#C8A261]/40 via-[#C8A261]/15 to-transparent rounded-2xl shadow-[0_15px_40px_-10px_rgba(0,0,0,0.9)]">
-                <div className="w-full h-full relative bg-[#0D0B08] overflow-hidden rounded-2xl">
+                <div className="w-full h-full relative bg-[#181818] overflow-hidden rounded-2xl">
                   <img
                     src="/hero_3.jpeg"
                     alt="Luxury Tableside Service"
@@ -474,17 +462,18 @@ export default function LandingPage() {
               </div>
             </div>
           </TiltCard>
+        </div>
 
+        {/* 5. Moved line running through hero images to under the hero images, and removed Gypsum as location */}
+        <div className="w-full py-2 px-6 flex-shrink-0">
           <MarqueeTicker items={distributionCenters} />
         </div>
 
-        <div className="w-full bg-[#0E0C09] border-t border-[#C8A261]/20 py-3.5 px-6 flex-shrink-0">
+        <div className="w-full bg-[#181818] border-t border-[#C8A261]/20 py-3.5 px-6 flex-shrink-0">
           <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between text-center sm:text-left font-['Plus_Jakarta_Sans'] gap-3 text-[10px] uppercase tracking-[0.3em] text-[#A39B8B]">
-            <span>USDA APHIS Permitted & FDA Registered</span>
-            <span className="hidden sm:inline text-[#8B6D36]">•</span>
             <span>48-Hr Direct Cold-Chain Air Freight</span>
             <span className="hidden sm:inline text-[#8B6D36]">•</span>
-            <span>100% Wild European Certified Species</span>
+            <span>Named European species, lot-labeled</span>
           </div>
         </div>
       </div>
@@ -492,24 +481,16 @@ export default function LandingPage() {
       {/* ================= PAGE 2: PRODUCTS CATALOG ================= */}
       <div
         id="products"
-        className="h-[100dvh] w-full snap-start flex flex-col justify-between items-center px-6 sm:px-12 py-6 relative z-10 text-center bg-[#0A0907]/80 overflow-hidden"
+        className="h-[100dvh] w-full snap-start flex flex-col justify-between items-center px-6 sm:px-12 py-6 relative z-10 text-center bg-[#141414] overflow-hidden"
       >
         <div className="w-full flex flex-col items-center z-10 pt-2">
-          {/* Seamless Circular Logo with Radial Mask & Screen Blend */}
           <div className="relative w-[120px] h-[120px] sm:w-[144px] sm:h-[144px] rounded-full overflow-hidden flex items-center justify-center bg-transparent">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(200,162,97,0.18)_0%,_transparent_75%)] pointer-events-none" />
             <img
               src="/logo.jpeg"
               alt="Black Oak Truffle Co. Logo"
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover rounded-full mix-blend-screen drop-shadow-[0_4px_16px_rgba(200,162,97,0.25)] filter contrast-125 brightness-110"
-              style={{
-                maskImage:
-                  'radial-gradient(circle, black 65%, transparent 98%)',
-                WebkitMaskImage:
-                  'radial-gradient(circle, black 65%, transparent 98%)',
-              }}
+              className="w-full h-full object-cover rounded-full"
             />
           </div>
           <p className="text-xs uppercase tracking-[0.4em] text-[#CBA86B] font-light pt-1.5 font-['Plus_Jakarta_Sans']">
@@ -523,7 +504,7 @@ export default function LandingPage() {
               <span className="w-2 h-2 rounded-full bg-[#E2C381] animate-ping"></span>
               <span>Peak Season • Direct Mountain Reserve</span>
             </div>
-            <div className="inline-flex items-center space-x-2 bg-[#13110E] border border-[#C8A261]/30 px-5 py-2 rounded-full text-[10px] sm:text-[11px] uppercase tracking-[0.3em] text-[#A39B8B] font-['Plus_Jakarta_Sans']">
+            <div className="inline-flex items-center space-x-2 bg-[#181818] border border-[#C8A261]/30 px-5 py-2 rounded-full text-[10px] sm:text-[11px] uppercase tracking-[0.3em] text-[#A39B8B] font-['Plus_Jakarta_Sans']">
               <span className="text-[#E2C381] font-bold">
                 Bi-Weekly Harvest Flight
               </span>
@@ -532,10 +513,10 @@ export default function LandingPage() {
           </div>
 
           <TiltCard className="w-full">
-            <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#13110E]/95 backdrop-blur-md border border-[#C8A261]/35 p-6 sm:p-10 rounded-3xl shadow-[0_30px_70px_-15px_rgba(0,0,0,0.95)] text-left relative">
+            <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-[#181818]/95 backdrop-blur-md border border-[#C8A261]/35 p-6 sm:p-10 rounded-3xl shadow-[0_30px_70px_-15px_rgba(0,0,0,0.95)] text-left relative">
               <div
                 onClick={() => setIsLightboxOpen(true)}
-                className="lg:col-span-5 relative h-[320px] sm:h-[420px] overflow-hidden border border-[#C8A261]/40 rounded-2xl bg-[#080706] cursor-pointer group shadow-2xl"
+                className="lg:col-span-5 relative h-[320px] sm:h-[420px] overflow-hidden border border-[#C8A261]/40 rounded-2xl bg-[#141414] cursor-pointer group shadow-2xl"
               >
                 <img
                   src={activeProduct.image}
@@ -571,7 +552,7 @@ export default function LandingPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-center space-x-2 bg-[#080706] border border-[#C8A261]/40 p-1 rounded-xl shadow-inner">
+                    <div className="flex items-center space-x-2 bg-[#141414] border border-[#C8A261]/40 p-1 rounded-xl shadow-inner">
                       <button
                         onClick={() => setUnitSystem('imperial')}
                         className={`px-3 py-1.5 text-[10px] uppercase tracking-wider transition rounded-lg cursor-pointer ${
@@ -621,7 +602,7 @@ export default function LandingPage() {
                       className={`px-4.5 py-3 border text-left transition-all duration-300 rounded-2xl cursor-pointer ${
                         selectedProduct === idx
                           ? 'bg-[#C8A261]/20 border-[#C8A261] text-[#A39B8B] shadow-lg transform -translate-y-0.5'
-                          : 'bg-[#080706] border-[#333333] text-[#A39B8B] hover:border-[#C8A261]/40'
+                          : 'bg-[#141414] border-[#333333] text-[#A39B8B] hover:border-[#C8A261]/40'
                       }`}
                     >
                       <span className="text-[11px] uppercase tracking-[0.2em] block font-medium truncate">
@@ -642,12 +623,9 @@ export default function LandingPage() {
           <MarqueeTicker items={truffleRegions} isRegion={true} />
         </div>
 
-        <div className="w-full bg-[#0E0C09] border-t border-[#C8A261]/20 py-3.5 px-6 flex-shrink-0 z-10">
+        {/* 2. Removed USDA/FDA details from Page 2 bottom */}
+        <div className="w-full bg-[#181818] border-t border-[#C8A261]/20 py-3.5 px-6 flex-shrink-0 z-10">
           <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between text-[10px] uppercase tracking-[0.3em] text-[#A39B8B] font-['Plus_Jakarta_Sans'] gap-3">
-            <span>USDA APHIS Permit #L-00142270 Verified</span>
-            <span className="hidden sm:inline text-[#8B6D36]">•</span>
-            <span>FDA Prior Notice PN-7201 Compliant</span>
-            <span className="hidden sm:inline text-[#8B6D36]">•</span>
             <span>Direct Denver International (DEN) Entry</span>
           </div>
         </div>
@@ -656,7 +634,7 @@ export default function LandingPage() {
       {/* ================= PAGE 3: THE PRIVATE RESERVE VAULT ================= */}
       <div
         id="vault"
-        className="h-[100dvh] w-full snap-start flex flex-col justify-between items-center px-6 sm:px-12 py-6 relative z-10 text-center bg-[#0A0907]/80 overflow-hidden"
+        className="h-[100dvh] w-full snap-start flex flex-col justify-between items-center px-6 sm:px-12 py-6 relative z-10 text-center bg-[#141414] overflow-hidden"
       >
         <div className="w-full flex flex-col items-center z-10 pt-2 space-y-2">
           <p className="text-[10px] sm:text-xs uppercase tracking-[0.5em] text-[#CBA86B] font-light font-['Plus_Jakarta_Sans']">
@@ -666,32 +644,24 @@ export default function LandingPage() {
             The Private Reserve Vault
           </h3>
 
-          {/* Seamless Circular Logo with Radial Mask & Screen Blend */}
           <div className="relative w-[120px] h-[120px] sm:w-[144px] sm:h-[144px] rounded-full overflow-hidden flex items-center justify-center my-1 bg-transparent">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(200,162,97,0.18)_0%,_transparent_75%)] pointer-events-none" />
             <img
               src="/logo.jpeg"
               alt="Black Oak Truffle Co. Logo"
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover rounded-full mix-blend-screen drop-shadow-[0_4px_16px_rgba(200,162,97,0.25)] filter contrast-125 brightness-110"
-              style={{
-                maskImage:
-                  'radial-gradient(circle, black 65%, transparent 98%)',
-                WebkitMaskImage:
-                  'radial-gradient(circle, black 65%, transparent 98%)',
-              }}
+              className="w-full h-full object-cover rounded-full"
             />
           </div>
           <p className="text-[10px] uppercase tracking-[0.4em] text-[#CBA86B] font-light font-['Plus_Jakarta_Sans']">
             BLACK OAK TRUFFLE CO. LLC
           </p>
 
+          {/* 3. Updated text description omitting Michelin-starred mention */}
           <p className="font-['Plus_Jakarta_Sans'] text-xs sm:text-sm text-[#A39B8B]/80 max-w-2xl mx-auto font-light leading-relaxed pt-6 sm:pt-8">
-            Reserved exclusively for Michelin-starred establishments and elite
-            resort tasting menus. Each colossal specimen is individually
-            cataloged, wild-harvested by master hunters, and flown direct via
-            cold-chain reserve.
+            Reserved exclusively for elite resort tasting menus. Each colossal
+            specimen is individually cataloged, wild-harvested by master
+            hunters, and flown direct via cold-chain reserve.
           </p>
         </div>
 
@@ -699,9 +669,9 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {exclusiveSpecimens.map((spec) => (
               <TiltCard key={spec.id}>
-                <div className="bg-[#13110E]/95 backdrop-blur-md border border-[#C8A261]/30 p-5 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)] text-left flex flex-col justify-between hover:border-[#C8A261] hover:shadow-[0_30px_60px_-10px_rgba(200,162,97,0.2)] transition-all duration-500 relative h-full">
+                <div className="bg-[#181818]/95 backdrop-blur-md border border-[#C8A261]/30 p-5 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)] text-left flex flex-col justify-between hover:border-[#C8A261] hover:shadow-[0_30px_60px_-10px_rgba(200,162,97,0.2)] transition-all duration-500 relative h-full">
                   <div>
-                    <div className="relative h-[140px] sm:h-[150px] overflow-hidden border border-[#C8A261]/30 rounded-2xl mb-3 bg-[#080706] shadow-inner">
+                    <div className="relative h-[140px] sm:h-[150px] overflow-hidden border border-[#C8A261]/30 rounded-2xl mb-3 bg-[#141414] shadow-inner">
                       <img
                         src={spec.image}
                         alt={spec.name}
@@ -757,7 +727,7 @@ export default function LandingPage() {
           </div>
         </div>
 
-        <div className="w-full bg-[#0E0C09] border-t border-[#C8A261]/20 py-3.5 px-6 flex-shrink-0 z-10">
+        <div className="w-full bg-[#181818] border-t border-[#C8A261]/20 py-3.5 px-6 flex-shrink-0 z-10">
           <p className="text-[10px] uppercase tracking-[0.3em] text-[#CBA86B] font-['Plus_Jakarta_Sans']">
             Private Vault lots are allocated on a first-in-inquiry basis for
             executive resort chefs.
@@ -768,10 +738,10 @@ export default function LandingPage() {
       {/* ================= PAGE 4: CONTACT & ALLOCATION FORM ================= */}
       <div
         id="contact"
-        className="h-[100dvh] w-full snap-start flex flex-col justify-between items-center px-6 sm:px-12 py-6 relative z-10 text-center bg-[#0A0907]/80"
+        className="h-[100dvh] w-full snap-start flex flex-col justify-between items-center px-6 sm:px-12 py-6 relative z-10 text-center bg-[#141414]"
       >
         <div className="flex-1 flex flex-col justify-center items-center w-full max-w-6xl mx-auto my-auto gap-6">
-          <div className="w-full bg-[#13110E]/95 backdrop-blur-md border border-[#C8A261]/35 p-8 sm:p-12 rounded-3xl shadow-[0_30px_90px_rgba(0,0,0,0.95)] relative transform hover:-translate-y-1 transition-all duration-500">
+          <div className="w-full bg-[#181818]/95 backdrop-blur-md border border-[#C8A261]/35 p-8 sm:p-12 rounded-3xl shadow-[0_30px_90px_rgba(0,0,0,0.95)] relative transform hover:-translate-y-1 transition-all duration-500">
             {!submitted ? (
               <form
                 onSubmit={handleSubmit}
@@ -786,11 +756,7 @@ export default function LandingPage() {
                   </h2>
                   <p className="font-['Plus_Jakarta_Sans'] text-xs sm:text-sm text-[#A39B8B]/80 max-w-2xl mx-auto font-light leading-relaxed">
                     Complete your wholesale allocation request below.
-                    Submissions require partner authentication code{' '}
-                    <span className="text-[#C8A261]">
-                      (Demo Code: BLACKOAK)
-                    </span>
-                    .
+                    Submissions require the partner code issued by dispatch.
                   </p>
                 </div>
 
@@ -806,7 +772,7 @@ export default function LandingPage() {
                       id="chef-name"
                       type="text"
                       required
-                      className="w-full bg-[#080706] border border-[#333333] px-4 py-3 rounded-2xl text-white text-sm focus:outline-none focus:ring-1 focus:ring-[#C8A261] transition shadow-inner"
+                      className="w-full bg-[#141414] border border-[#333333] px-4 py-3 rounded-2xl text-white text-sm focus:outline-none focus:ring-1 focus:ring-[#C8A261] transition shadow-inner"
                       placeholder="Chef Name"
                       value={formData.name}
                       onChange={(e) =>
@@ -825,7 +791,7 @@ export default function LandingPage() {
                       id="restaurant-name"
                       type="text"
                       required
-                      className="w-full bg-[#080706] border border-[#333333] px-4 py-3 rounded-2xl text-white text-sm focus:outline-none focus:ring-1 focus:ring-[#C8A261] transition shadow-inner"
+                      className="w-full bg-[#141414] border border-[#333333] px-4 py-3 rounded-2xl text-white text-sm focus:outline-none focus:ring-1 focus:ring-[#C8A261] transition shadow-inner"
                       placeholder="Resort / Restaurant Name"
                       value={formData.restaurant}
                       onChange={(e) =>
@@ -847,7 +813,7 @@ export default function LandingPage() {
                       id="phone-number"
                       type="tel"
                       required
-                      className="w-full bg-[#080706] border border-[#333333] px-4 py-3 rounded-2xl text-white text-sm focus:outline-none focus:ring-1 focus:ring-[#C8A261] transition shadow-inner"
+                      className="w-full bg-[#141414] border border-[#333333] px-4 py-3 rounded-2xl text-white text-sm focus:outline-none focus:ring-1 focus:ring-[#C8A261] transition shadow-inner"
                       placeholder="918-852-5701"
                       value={formData.phone}
                       onChange={(e) =>
@@ -864,15 +830,16 @@ export default function LandingPage() {
                     </label>
                     <select
                       id="allocation-tier"
-                      className="w-full bg-[#080706] border border-[#333333] px-4 py-3 rounded-2xl text-white text-sm focus:outline-none focus:ring-1 focus:ring-[#C8A261] transition cursor-pointer shadow-inner"
+                      className="w-full bg-[#141414] border border-[#333333] px-4 py-3 rounded-2xl text-white text-sm focus:outline-none focus:ring-1 focus:ring-[#C8A261] transition cursor-pointer shadow-inner"
                       value={formData.tier}
                       onChange={(e) =>
                         setFormData({ ...formData, tier: e.target.value })
                       }
                     >
-                      <option value="1 lb Weekly Trial">
-                        1 lb Weekly Trial
+                      <option value="Chef trial (4–8 oz)">
+                        Chef trial (4–8 oz)
                       </option>
+                      <option value="1 lb Weekly">1 lb Weekly Reserve</option>
                       <option value="2-5 lbs Weekly">
                         2 – 5 lbs Weekly Reserve
                       </option>
@@ -883,7 +850,7 @@ export default function LandingPage() {
                   </div>
                 </div>
 
-                <div className="bg-[#080706] border border-[#C8A261]/30 p-4 rounded-2xl space-y-2 shadow-inner">
+                <div className="bg-[#141414] border border-[#C8A261]/30 p-4 rounded-2xl space-y-2 shadow-inner">
                   <label
                     htmlFor="partner-passcode"
                     className="block text-[11px] uppercase tracking-[0.2em] text-[#E2C381] font-light"
@@ -895,7 +862,7 @@ export default function LandingPage() {
                     type="password"
                     required
                     className="w-full bg-black border border-[#333333] px-4 py-2.5 rounded-xl text-white text-sm tracking-widest focus:outline-none focus:ring-1 focus:ring-[#C8A261] transition"
-                    placeholder="Enter Code (BLACKOAK)"
+                    placeholder="Partner code"
                     value={formData.passcode}
                     onChange={(e) =>
                       setFormData({ ...formData, passcode: e.target.value })
@@ -925,7 +892,7 @@ export default function LandingPage() {
                     href={`sms:9188525701?body=${encodeURIComponent(
                       `Inquiry from ${formData.name || 'Chef'} at ${formData.restaurant || 'Restaurant'} regarding ${formData.tier}`,
                     )}`}
-                    className="px-5 py-3.5 bg-[#141414] border border-[#C8A261]/50 text-[#E2C381] hover:bg-[#C8A261]/10 rounded-2xl text-xs font-semibold uppercase tracking-[0.2em] transition text-center flex items-center justify-center shadow-md"
+                    className="px-5 py-3.5 bg-[#141414] border border-[#C8A261]/50 text-[#E2C381] hover:bg-[#C8A261]/10 rounded-2xl text-xs font-semibold uppercase tracking-[0.2em] transition text-center flex items-1 justify-center shadow-md"
                   >
                     💬 Text Dispatch
                   </a>
@@ -961,25 +928,20 @@ export default function LandingPage() {
             )}
           </div>
 
-          <MarqueeTicker items={partnerRestaurants} />
+          <p className="text-[10px] uppercase tracking-[0.35em] text-[#CBA86B] font-['Plus_Jakarta_Sans']">
+            High-country delivery corridor
+          </p>
+          <MarqueeTicker items={serviceCorridor} />
         </div>
 
         <div className="flex flex-col items-center space-y-1.5 font-['Plus_Jakarta_Sans'] mb-4">
-          {/* Seamless Circular Logo with Radial Mask & Screen Blend */}
           <div className="relative w-[120px] h-[120px] sm:w-[144px] sm:h-[144px] rounded-full overflow-hidden flex items-center justify-center pt-1 bg-transparent">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(200,162,97,0.18)_0%,_transparent_75%)] pointer-events-none" />
             <img
               src="/logo.jpeg"
               alt="Black Oak Truffle Co. Logo"
               loading="lazy"
               decoding="async"
-              className="w-full h-full object-cover rounded-full mix-blend-screen drop-shadow-[0_4px_16px_rgba(200,162,97,0.25)] filter contrast-125 brightness-110"
-              style={{
-                maskImage:
-                  'radial-gradient(circle, black 65%, transparent 98%)',
-                WebkitMaskImage:
-                  'radial-gradient(circle, black 65%, transparent 98%)',
-              }}
+              className="w-full h-full object-cover rounded-full"
             />
           </div>
           <p className="text-[10px] uppercase tracking-[0.4em] text-[#CBA86B] font-light">
@@ -987,38 +949,23 @@ export default function LandingPage() {
           </p>
         </div>
 
+        {/* 4. Removed USDA APHIS L-00142270 and Dispatch phone from footer */}
         <footer className="w-full max-w-[1400px] mx-auto pt-2 pb-2 border-t border-[#C8A261]/20 flex flex-col md:flex-row items-center justify-between text-[11px] font-['Plus_Jakarta_Sans'] text-[#A39B8B] tracking-widest uppercase flex-shrink-0 bg-transparent gap-4">
           <div className="text-center md:text-left">
             <p className="text-[#E2C381] font-light tracking-[0.2em]">
               Black Oak Truffle Co. LLC
             </p>
             <p className="text-[9px] text-[#A39B8B]/60 mt-0.5">
-              Direct Reserve • Eagle County, Colorado
+              Direct Reserve • Monaco
             </p>
           </div>
 
           <div className="flex items-center space-x-5 text-[10px] flex-wrap justify-center">
             <a
-              href="https://www.aphis.usdata.gov"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-[#E2C381] transition-colors"
-            >
-              USDA APHIS L-00142270
-            </a>
-            <span>•</span>
-            <a
               href="mailto:orders@blackoaktruffleco.com"
               className="hover:text-[#E2C381] transition-colors"
             >
               orders@blackoaktruffleco.com
-            </a>
-            <span>•</span>
-            <a
-              href="tel:9188525701"
-              className="hover:text-[#E2C381] transition-colors"
-            >
-              Dispatch: +1 (918) 852-5701
             </a>
           </div>
 
