@@ -6,8 +6,10 @@ const truffleProducts = [
     name: 'Black Winter Truffle',
     species: 'Tuber melanosporum',
     origin: 'Teruel, Spain & Périgord, France',
-    pricePerOz: 135,
-    pricePerLb: 2160,
+    pricePerOz: 145,
+    pricePerLb: 2280,
+    pricePer100g: 511,
+    pricePerKg: 5027,
     season: 'November – March',
     grade: 'Extra / Grade A (30g – 100g+)',
     pairing:
@@ -20,8 +22,10 @@ const truffleProducts = [
     name: 'Italian White Truffle',
     species: 'Tuber magnatum pico',
     origin: 'Alba, Piedmont, Italy',
-    pricePerOz: 295,
-    pricePerLb: 4720,
+    pricePerOz: 320,
+    pricePerLb: 4950,
+    pricePer100g: 1129,
+    pricePerKg: 10913,
     season: 'October – December',
     grade: 'Grade A Whole Tubers (20g – 80g)',
     pairing:
@@ -34,8 +38,10 @@ const truffleProducts = [
     name: 'Burgundy / Autumn Truffle',
     species: 'Tuber uncinatum',
     origin: 'Burgundy, France & Austrian Alps',
-    pricePerOz: 58,
-    pricePerLb: 928,
+    pricePerOz: 65,
+    pricePerLb: 980,
+    pricePer100g: 229,
+    pricePerKg: 2160,
     season: 'September – December',
     grade: 'Grade A Fresh Selects (25g – 90g)',
     pairing:
@@ -96,7 +102,7 @@ const distributionCenters = [
   { center: 'Telluride', region: 'Colorado' },
   { center: 'Basalt', region: 'Colorado' },
   { center: 'Carbondale', region: 'Colorado' },
-  { center: 'Eagle', region: 'Colorado' },
+  { center: 'Gypsum', region: 'Colorado' },
 ];
 
 const truffleRegions = [
@@ -268,9 +274,7 @@ export default function LandingPage() {
     if (unitSystem === 'imperial') {
       return `$${prod.pricePerOz} / oz ($${prod.pricePerLb.toLocaleString()} / lb)`;
     } else {
-      const pricePer100g = Math.round((prod.pricePerOz / 28.3495) * 100);
-      const pricePerKg = Math.round(prod.pricePerLb / 0.45359237);
-      return `$${pricePer100g} / 100g ($${pricePerKg.toLocaleString()} / kg)`;
+      return `$${prod.pricePer100g} / 100g ($${prod.pricePerKg.toLocaleString()} / kg)`;
     }
   };
 
@@ -349,11 +353,11 @@ export default function LandingPage() {
       )}
 
       {/* ================= PAGE 1: HERO ================= */}
-      <div className="h-[100dvh] w-full snap-start flex flex-col justify-between relative z-10 bg-[#141414] py-6">
+      <div className="h-[100dvh] w-full snap-start flex flex-col justify-between relative z-10 bg-[#141414] py-6 overflow-y-auto">
         <header className="w-full bg-[#181818]/90 backdrop-blur-md border-b border-[#C8A261]/20 flex-shrink-0 z-50 shadow-lg">
           <div className="max-w-[1600px] mx-auto px-6 sm:px-12 py-5 flex items-center justify-between">
             <div className="flex items-center space-x-5">
-              <div className="relative w-[108px] h-[108px] sm:w-[120px] sm:h-[120px] rounded-full overflow-hidden flex items-center justify-center flex-shrink-0 bg-transparent">
+              <div className="relative w-[162px] h-[162px] sm:w-[180px] sm:h-[180px] rounded-full overflow-hidden flex items-center justify-center flex-shrink-0 bg-transparent">
                 <img
                   src="/logo.jpeg"
                   alt="Black Oak Truffle Co. Logo Emblem"
@@ -404,7 +408,7 @@ export default function LandingPage() {
         </header>
 
         {/* Hero Section Container */}
-        <div className="flex-1 flex flex-col justify-center items-center px-6 py-4 w-full max-w-6xl mx-auto gap-4 my-auto -translate-y-6">
+        <div className="w-full max-w-6xl mx-auto px-6 py-4 flex flex-col items-center gap-4 my-auto pb-40">
           <div className="space-y-1 text-center flex flex-col items-center justify-center drop-shadow-md">
             <p className="font-['Plus_Jakarta_Sans'] text-[10px] sm:text-xs uppercase tracking-[0.5em] text-[#CBA86B] font-light">
               Exclusive Harvest & Distribution
@@ -464,8 +468,8 @@ export default function LandingPage() {
           </TiltCard>
         </div>
 
-        {/* 5. Moved line running through hero images to under the hero images, and removed Gypsum as location */}
-        <div className="w-full py-2 px-6 flex-shrink-0">
+        {/* Marquee Ticker */}
+        <div className="w-full pt-10 pb-2">
           <MarqueeTicker items={distributionCenters} />
         </div>
 
@@ -484,7 +488,7 @@ export default function LandingPage() {
         className="h-[100dvh] w-full snap-start flex flex-col justify-between items-center px-6 sm:px-12 py-6 relative z-10 text-center bg-[#141414] overflow-hidden"
       >
         <div className="w-full flex flex-col items-center z-10 pt-2">
-          <div className="relative w-[120px] h-[120px] sm:w-[144px] sm:h-[144px] rounded-full overflow-hidden flex items-center justify-center bg-transparent">
+          <div className="relative w-[162px] h-[162px] sm:w-[180px] sm:h-[180px] rounded-full overflow-hidden flex items-center justify-center bg-transparent">
             <img
               src="/logo.jpeg"
               alt="Black Oak Truffle Co. Logo"
@@ -611,7 +615,7 @@ export default function LandingPage() {
                       <span className="text-[10px] text-[#CBA86B] block truncate mt-1">
                         {unitSystem === 'imperial'
                           ? `$${prod.pricePerOz} / oz`
-                          : `$${Math.round((prod.pricePerOz / 28.3495) * 100)} / 100g`}
+                          : `$${prod.pricePer100g} / 100g`}
                       </span>
                     </button>
                   ))}
@@ -623,10 +627,9 @@ export default function LandingPage() {
           <MarqueeTicker items={truffleRegions} isRegion={true} />
         </div>
 
-        {/* 2. Removed USDA/FDA details from Page 2 bottom */}
         <div className="w-full bg-[#181818] border-t border-[#C8A261]/20 py-3.5 px-6 flex-shrink-0 z-10">
-          <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between text-[10px] uppercase tracking-[0.3em] text-[#A39B8B] font-['Plus_Jakarta_Sans'] gap-3">
-            <span>Direct Denver International (DEN) Entry</span>
+          <div className="max-w-6xl mx-auto flex items-center justify-center text-[10px] uppercase tracking-[0.3em] text-[#A39B8B] font-['Plus_Jakarta_Sans']">
+            <span>Direct International Entry</span>
           </div>
         </div>
       </div>
@@ -644,7 +647,7 @@ export default function LandingPage() {
             The Private Reserve Vault
           </h3>
 
-          <div className="relative w-[120px] h-[120px] sm:w-[144px] sm:h-[144px] rounded-full overflow-hidden flex items-center justify-center my-1 bg-transparent">
+          <div className="relative w-[162px] h-[162px] sm:w-[180px] sm:h-[180px] rounded-full overflow-hidden flex items-center justify-center my-1 bg-transparent">
             <img
               src="/logo.jpeg"
               alt="Black Oak Truffle Co. Logo"
@@ -657,7 +660,6 @@ export default function LandingPage() {
             BLACK OAK TRUFFLE CO. LLC
           </p>
 
-          {/* 3. Updated text description omitting Michelin-starred mention */}
           <p className="font-['Plus_Jakarta_Sans'] text-xs sm:text-sm text-[#A39B8B]/80 max-w-2xl mx-auto font-light leading-relaxed pt-6 sm:pt-8">
             Reserved exclusively for elite resort tasting menus. Each colossal
             specimen is individually cataloged, wild-harvested by master
@@ -671,7 +673,8 @@ export default function LandingPage() {
               <TiltCard key={spec.id}>
                 <div className="bg-[#181818]/95 backdrop-blur-md border border-[#C8A261]/30 p-5 rounded-3xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)] text-left flex flex-col justify-between hover:border-[#C8A261] hover:shadow-[0_30px_60px_-10px_rgba(200,162,97,0.2)] transition-all duration-500 relative h-full">
                   <div>
-                    <div className="relative h-[140px] sm:h-[150px] overflow-hidden border border-[#C8A261]/30 rounded-2xl mb-3 bg-[#141414] shadow-inner">
+                    {/* Increased image height by 50% (h-[210px] sm:h-[225px]) */}
+                    <div className="relative h-[210px] sm:h-[225px] overflow-hidden border border-[#C8A261]/30 rounded-2xl mb-3 bg-[#141414] shadow-inner">
                       <img
                         src={spec.image}
                         alt={spec.name}
@@ -756,7 +759,7 @@ export default function LandingPage() {
                   </h2>
                   <p className="font-['Plus_Jakarta_Sans'] text-xs sm:text-sm text-[#A39B8B]/80 max-w-2xl mx-auto font-light leading-relaxed">
                     Complete your wholesale allocation request below.
-                    Submissions require the partner code issued by dispatch.
+                    Submissions route directly to our orders desk.
                   </p>
                 </div>
 
@@ -883,7 +886,7 @@ export default function LandingPage() {
                     Request Fresh Allocation
                   </button>
                   <a
-                    href="mailto:orders@blackoaktruffleco.com?subject=Wholesale%20Inquiry%20from%20Website"
+                    href="mailto:orders@blackoaktruffleco.com?cc=adlan.yandarbiev@blackoaktruffleco.com&subject=Wholesale%20Inquiry%20from%20Website"
                     className="px-5 py-3.5 bg-[#141414] border border-[#C8A261]/50 text-[#E2C381] hover:bg-[#C8A261]/10 rounded-2xl text-xs font-semibold uppercase tracking-[0.2em] transition text-center flex items-center justify-center shadow-md"
                   >
                     ✉️ Email Desk
@@ -935,7 +938,7 @@ export default function LandingPage() {
         </div>
 
         <div className="flex flex-col items-center space-y-1.5 font-['Plus_Jakarta_Sans'] mb-4">
-          <div className="relative w-[120px] h-[120px] sm:w-[144px] sm:h-[144px] rounded-full overflow-hidden flex items-center justify-center pt-1 bg-transparent">
+          <div className="relative w-[162px] h-[162px] sm:w-[180px] sm:h-[180px] rounded-full overflow-hidden flex items-center justify-center pt-1 bg-transparent">
             <img
               src="/logo.jpeg"
               alt="Black Oak Truffle Co. Logo"
@@ -949,17 +952,7 @@ export default function LandingPage() {
           </p>
         </div>
 
-        {/* 4. Removed USDA APHIS L-00142270 and Dispatch phone from footer */}
-        <footer className="w-full max-w-[1400px] mx-auto pt-2 pb-2 border-t border-[#C8A261]/20 flex flex-col md:flex-row items-center justify-between text-[11px] font-['Plus_Jakarta_Sans'] text-[#A39B8B] tracking-widest uppercase flex-shrink-0 bg-transparent gap-4">
-          <div className="text-center md:text-left">
-            <p className="text-[#E2C381] font-light tracking-[0.2em]">
-              Black Oak Truffle Co. LLC
-            </p>
-            <p className="text-[9px] text-[#A39B8B]/60 mt-0.5">
-              Direct Reserve • Monaco
-            </p>
-          </div>
-
+        <footer className="w-full max-w-[1400px] mx-auto pt-2 pb-2 border-t border-[#C8A261]/20 flex flex-col md:flex-row items-center justify-center text-[11px] font-['Plus_Jakarta_Sans'] text-[#A39B8B] tracking-widest uppercase flex-shrink-0 bg-transparent gap-4">
           <div className="flex items-center space-x-5 text-[10px] flex-wrap justify-center">
             <a
               href="mailto:orders@blackoaktruffleco.com"
@@ -967,10 +960,6 @@ export default function LandingPage() {
             >
               orders@blackoaktruffleco.com
             </a>
-          </div>
-
-          <div className="text-center md:text-right text-[10px] text-[#A39B8B]/60">
-            <p>© {new Date().getFullYear()} All Rights Reserved.</p>
           </div>
         </footer>
       </div>
